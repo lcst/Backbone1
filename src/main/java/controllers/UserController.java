@@ -59,6 +59,8 @@ public class UserController {
         return (newUser);
     }
 
+    /* TODO Add PUT */
+
     @PostConstruct
     private void initUsers() {
         users.add(new User("John Smith", "jsmith123@xyzonline.com"));
