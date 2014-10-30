@@ -29,7 +29,7 @@
         <tr>
             <td><%= user.get('name') %></td>
             <td><%= user.get('email') %></td>
-            <td><a href="#/edit/<%=user.id%>" class="btn btn-primary"></a>Edit</td>
+            <td><a href="#/edit/<%=user.id%>" class="btn">Edit</a></td>
         </tr>
         <% }); %>
         </tbody>
@@ -40,9 +40,9 @@
     <form class="edit-user-form">
         <legend><%= user ? 'Update' : 'Create'%> User</legend>
         <label>Name</label>
-        <input type="text" name="firstname"/>
+        <input type="text" name="name" value="<%= user ? user.get('name') : ''%>"/>
         <label>Email</label>
-        <input type="text" name="age"/>
+        <input type="text" name="email" value="<%= user ? user.get('email') : ''%>"/>
         <hr/>
         <button type="submit" class="btn">Create</button>
 

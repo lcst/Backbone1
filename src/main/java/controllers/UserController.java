@@ -37,7 +37,7 @@ public class UserController {
     public JsonObject getUser(@Context UriInfo uriInfo) {
         String stringID = uriInfo.getPathParameters().get("id").get(0);
         int index = new Integer(stringID);
-        return (users.get(0).getJson());
+        return (getUser(index).getJson());
     }
 
     private User getUser(int id) {

@@ -1,4 +1,4 @@
-var serverUrlRoot = '/SampleApp/api/users'
+var serverUrlRoot = '/SampleApp/api/users';
 
 $.fn.serializeObject = function () {
     var o = {};
@@ -53,7 +53,7 @@ var EditUser = Backbone.View.extend({
                 }
             })
         } else {
-            var template = _.template($('#edit-user-template').html(), {});
+            var template = _.template($('#edit-user-template').html(), {user: null});
             this.$el.html(template)
         }
     },
