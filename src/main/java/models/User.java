@@ -12,6 +12,13 @@ public class User {
     private String email;
     private int id;
 
+    public User(String name, String email) {
+
+        this.name = name;
+        this.email = email;
+        this.id = generateId();
+    }
+
     public int getId() {
         return id;
     }
@@ -20,19 +27,11 @@ public class User {
         this.id = id;
     }
 
-    public User(String name, String email) {
-
-        this.name = name;
-        this.email = email;
-        this.id = generateId();
-    }
-
     private int generateId() {
         long l = System.currentTimeMillis() * (new Random()).nextInt();
         String asString = "" + l;
         String as5String = asString.substring((asString.length() - 5), (asString.length()));
         return new Integer(as5String);
-
     }
 
     public JsonObject getJson() {

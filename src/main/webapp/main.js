@@ -1,8 +1,4 @@
-/*
- $.ajaxPrefilter( function( options, originalOptions, jqXHR) {
- options.url = 'http://backbonejs-beginner.herokuapp.com' + options.url;
- });
- */
+var serverUrlRoot = '/SampleApp/api/users'
 
 $.fn.serializeObject = function () {
     var o = {};
@@ -21,11 +17,11 @@ $.fn.serializeObject = function () {
 };
 
 var Users = Backbone.Collection.extend({
-    url: '/SampleApp/api/users/all'
+    url: serverUrlRoot + '/all'
 });
 
 var User = Backbone.Model.extend({
-        urlRoot: '/SampleApp/api/users'
+        urlRoot: serverUrlRoot
     }
 );
 
