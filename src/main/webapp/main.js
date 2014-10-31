@@ -1,4 +1,4 @@
-var serverUrlRoot = '/SampleApp/api/users';
+var serverUrlRoot = '/BackboneExample/api/users';
 
 $.fn.serializeObject = function () {
     var o = {};

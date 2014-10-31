@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Backbone-RESTful:war exploded">
-    <output-path>$PROJECT_DIR$/target/SampleApp</output-path>
+    <output-path>$PROJECT_DIR$/target/BackboneExample</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
