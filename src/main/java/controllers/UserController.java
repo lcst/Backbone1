@@ -20,6 +20,7 @@ public class UserController {
 
     private List<User> users = new ArrayList<User>();
 
+    //Returns an array of user objects as Array of JSON
     @Path("/all")
     @GET
     @Produces("application/json")
@@ -31,6 +32,7 @@ public class UserController {
         return builder.build();
     }
 
+    //Returns a single user object as JSON
     @Path("/{id}")
     @GET
     @Produces("application/json")
@@ -48,6 +50,7 @@ public class UserController {
         return null;
     }
 
+    //Create a new user from JSON
     @POST
     @Consumes("application/json")
     public JsonObject addUser(JsonObject newUser) {
@@ -59,7 +62,18 @@ public class UserController {
         return (newUser);
     }
 
-    /* TODO Add PUT */
+    //Update a user from JSON, return JSON
+    @Path("/{id}")
+    @PUT
+    @Consumes("application/json")
+    public JsonObject editUser(@Context UriInfo uriInfo, JsonObject newUserInfo) {
+        String stringID = uriInfo.getPathParameters().get("id").get(0);
+        int index = new Integer(stringID);
+        User user = getUser(index);
+        user.setName(newUserInfo.getString("name"));
+        user.setEmail(newUserInfo.getString("email"));
+        return (getUser(index).getJson());
+    }
 
     @PostConstruct
     private void initUsers() {

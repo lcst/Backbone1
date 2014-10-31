@@ -44,7 +44,10 @@
         <label>Email</label>
         <input type="text" name="email" value="<%= user ? user.get('email') : ''%>"/>
         <hr/>
-        <button type="submit" class="btn">Create</button>
+        <% if(user) {%>
+        <input type="hidden" name="id" value="<%= user.get('id') %>"/>
+        <% }; %>
+        <button type="submit" class="btn"><%= user ? 'Update' : 'Create'%></button>
 
     </form>
 </script>
