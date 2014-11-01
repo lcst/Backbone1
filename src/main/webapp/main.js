@@ -27,13 +27,13 @@ var User = Backbone.Model.extend({
 
 var UserList = Backbone.View.extend({
     el: '.page',
+    template: _.template($('#user-list-template').html()),
     render: function () {
         var that = this;
         var users = new Users();
         users.fetch({
             success: function (users) {
-                var template = _.template($('#user-list-template').html(), {users: users.models});
-                that.$el.html(template)
+                that.$el.html(that.template({users: users.models}))
             }
         })
     }
@@ -41,6 +41,7 @@ var UserList = Backbone.View.extend({
 
 var EditUser = Backbone.View.extend({
     el: '.page',
+    template: _.template($('#edit-user-template').html()),
     render: function (options) {
         var that = this;
         if (options.id) {
@@ -48,13 +49,11 @@ var EditUser = Backbone.View.extend({
             var user = new User({id: options.id});
             user.fetch({
                 success: function (user) {
-                    var template = _.template($('#edit-user-template').html(), {user: user});
-                    that.$el.html(template)
+                    that.$el.html(that.template({user: user}))
                 }
             })
         } else {
-            var template = _.template($('#edit-user-template').html(), {user: null});
-            this.$el.html(template)
+            this.$el.html(this.template({user: null}))
         }
     },
     events: {
@@ -93,9 +92,9 @@ var DeleteUser = Backbone.View.extend({
 var Router = Backbone.Router.extend({
     routes: {
         '': 'home',
-        '/new': 'editUser',
-        '/edit/:id': 'editUser',
-        '/delete/:id': 'deleteUser'
+        'new': 'editUser',
+        'edit/:id': 'editUser',
+        'delete/:id': 'deleteUser'
     }
 });
 
