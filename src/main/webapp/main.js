@@ -88,7 +88,7 @@ var DeleteUser = Backbone.View.extend({
             }
         })
     }
-})
+});
 
 var Router = Backbone.Router.extend({
     routes: {
