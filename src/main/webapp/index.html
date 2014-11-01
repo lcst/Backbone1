@@ -29,7 +29,10 @@
         <tr>
             <td><%= user.get('name') %></td>
             <td><%= user.get('email') %></td>
-            <td><a href="#/edit/<%=user.id%>" class="btn">Edit</a></td>
+            <td>
+                <a href="#/edit/<%=user.id%>" class="btn">Edit</a>
+                <a href="#/delete/<%=user.id%>" class="btn-danger">Delete</a>
+            </td>
         </tr>
         <% }); %>
         </tbody>

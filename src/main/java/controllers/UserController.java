@@ -75,6 +75,15 @@ public class UserController {
         return (getUser(index).getJson());
     }
 
+    //Delete a user by Id
+    @Path("/{id}")
+    @DELETE
+    public void deleteUser(@Context UriInfo uriInfo) {
+        int index = new Integer(uriInfo.getPathParameters().get("id").get(0));
+        User user = getUser(index);
+        users.remove(user);
+    }
+
     @PostConstruct
     private void initUsers() {
         users.add(new User("John Smith", "jsmith123@xyzonline.com"));

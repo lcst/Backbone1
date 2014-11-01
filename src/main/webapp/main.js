@@ -74,16 +74,34 @@ var EditUser = Backbone.View.extend({
     }
 });
 
+var DeleteUser = Backbone.View.extend({
+    render: function (options) {
+        console.log(options.id);
+        var user = new User({id: options.id});
+        user.fetch({
+            success: function (user) {
+                user.destroy({
+                    success: function () {
+                        router.navigate('', {trigger: true});
+                    }
+                })
+            }
+        })
+    }
+})
+
 var Router = Backbone.Router.extend({
     routes: {
         '': 'home',
         '/new': 'editUser',
-        '/edit/:id': 'editUser'
+        '/edit/:id': 'editUser',
+        '/delete/:id': 'deleteUser'
     }
 });
 
 var userList = new UserList();
 var editUser = new EditUser();
+var deleteUser = new DeleteUser();
 
 var router = new Router();
 
@@ -93,6 +111,10 @@ router.on('route:home', function () {
 
 router.on('route:editUser', function (id) {
     editUser.render({id: id});
+});
+
+router.on('route:deleteUser', function (id) {
+    deleteUser.render({id: id});
 });
 
 Backbone.history.start();
